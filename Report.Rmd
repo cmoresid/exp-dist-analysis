@@ -20,12 +20,53 @@ We will also show how the distribution of a large amount of sample means drawn f
 ## Sample Mean vs. Population Mean
 *Note: For the purposes of this report, the distribution for which all samples will be drawn from will be an exponential distribution with $\lambda = 0.2$. i.e. $X \sim Exp(\lambda = 0.2)$*
 
-The expected value (or mean) of an exponential distribution is $E(x) = \frac{1}{\lambda}$. Since $\lambda = 0.2$ for our theoretical distribution, the mean will be 5. Similarly, the variance of our theoretical distribution is also $\frac{1}{\lambda}$ therefore so $Var(X) = 5$.  
+The expected value (or mean) of an exponential distribution is $E(x) = \frac{1}{\lambda}$. Since $\lambda = 0.2$ for our theoretical distribution, the mean will be 5. Similarly, the standard deviation of our theoretical distribution is also $\frac{1}{\lambda}$ therefore so $\sigma = 5$.  
   
 \[\mu = E(X) = \frac{1}{\lambda} = \frac{1}{0.2} = 5\]  
 
-\[\sigma^2 = Var(X) = \frac{1}{\lambda} = \frac{1}{0.2} = 5\]  
+\[\sigma = \frac{1}{\lambda} = \frac{1}{0.2} = 5\]  
 
+Our first task is to compare the theoretical (or population) mean of our exponential distribution to the mean of a sample drawn from our population distribution.
 
+Let's first start with 
 
+```{r initialize}
+set.seed(1234)
+```
 
+```{r init_sample}
+sample <- rexp(n = 1000, rate = 0.2)
+```
+
+```{r x_bar}
+sample_mean <- mean(sample)
+```
+
+```{r sigma}
+sample_sd <- sd(sample)^2
+```
+
+```{r}
+sample_matrix <- matrix(rexp(40000, 0.2), 1000)
+
+average_means <- data.frame(avg_means = rowMeans(sample_matrix))
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(average_means, aes(x = average_means$avg_means)) + 
+    geom_histogram(colour = "black", fill = "white") +
+    ylab('Frequency') +
+    xlab('Sample Mean Values')
+```
+
+```{r}
+standardized_means = (average_means - 5) / 5
+
+ggplot(standardized_means , aes(x = standardized_means$avg_means))  + 
+    geom_histogram(aes(y = ..density..), colour = "black", fill = "white") +
+    stat_function(fun=dnorm, aes(x = rnorm(n = 1000, mean = 5, sd = 5)), color = "#FF6666") +
+    ylab("Density") +
+    xlab("Sample Mean Values")
+```
