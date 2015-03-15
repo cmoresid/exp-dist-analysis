@@ -1,0 +1,31 @@
+---
+title: An Analysis of the Properties of the Exponential Distribution and Demonstration
+  of the CLT
+author: "Connor M"
+date: "March 14, 2015"
+output:
+  pdf_document:
+    keep_tex: yes
+---
+
+## Introduction  
+
+It will be the purpose of this report to compare and contrast the following:  
+
+1. The mean of a sample drawn from an exponential distribution and the mean of the theoretical exponential distribution said sample was drawn from.  
+2. The variance of a sample drawn from an exponential distribution and the variance of the theoretical exponential distribution said sample was drawn from.  
+
+We will also show how the distribution of a large amount of sample means drawn from an exponential distribution approximately follows a gaussian (normal) distribution. This phenomenon is described by the Central Limit Theorem (CTL).  
+
+## Sample Mean vs. Population Mean
+*Note: For the purposes of this report, the distribution for which all samples will be drawn from will be an exponential distribution with $\lambda = 0.2$. i.e. $X \sim Exp(\lambda = 0.2)$*
+
+The expected value (or mean) of an exponential distribution is $E(x) = \frac{1}{\lambda}$. Since $\lambda = 0.2$ for our theoretical distribution, the mean will be 5. Similarly, the variance of our theoretical distribution is also $\frac{1}{\lambda}$ therefore so $Var(X) = 5$.  
+  
+\[\mu = E(X) = \frac{1}{\lambda} = \frac{1}{0.2} = 5\]  
+
+\[\sigma^2 = Var(X) = \frac{1}{\lambda} = \frac{1}{0.2} = 5\]  
+
+
+
+
