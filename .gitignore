@@ -1,3 +1,6 @@
 *.tex
 *.pdf
-Report_files
+*.aux
+*.html
+*.log
+*.out
